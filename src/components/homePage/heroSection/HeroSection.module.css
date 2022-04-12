@@ -1,0 +1,44 @@
+.heroSection {
+    width: 100%;
+    height: 800px;
+    left: 0px;
+    top: 0px;
+    background: #FE7968;
+    margin-top: -96px;
+}
+
+.heroItemContainer{
+    position: relative;
+    top: 100px;
+    /* background-color: #4d36f7; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.heroTitle {
+    color: white;
+    font-size: 65px;
+    font-weight: 700;
+    font-family: "Oswald", sans-serif;
+}
+
+.heroDescription {
+    color: white;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 15px;
+    font-weight: normal;
+    text-align: justify;
+}
+
+.heroButton {
+    width: 170px;
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    color: #FE7968;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 32px;
+    text-transform: uppercase;
+}

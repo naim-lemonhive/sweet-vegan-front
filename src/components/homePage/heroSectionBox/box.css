@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+.trapezoid {
+    background-color: white;
+    width: 195px;
+    border: 2px solid #ffffff;
+    clip-path: polygon(5% 100%, 95% 100%, 100% 0, 0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+}
+.text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#burst-12 {
+/* background-image: url(/public/Star\ 1.svg);
+background-repeat: no-repeat;
+background-size: contain;
+width: 200px; */
+position: relative;
+}
+.candy{
+/* background-image: url('../../images/Star.svg'); */
+background-repeat: no-repeat;
+background-size: cover;
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+
+/* width: 200px; */
+}
+.middleName{
+    position: absolute;
+    top: 47px;
+    left: 18px;
+    color: #ffffff;
+    font-family: 'Rochester', cursive;
+    font-size: 29px;
+    transform: rotate(-20deg);
+}
+.heading{
+    background-color: #2a4e96;
+    margin-top: 3px;
+    width: 193px;
+    text-align: center;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    clip-path: polygon(2% 100%, 98% 100%, 100% 0, 0 0);
+}
+.headingText{
+    color: #4F4F4F;
+    font-size: 20px;
+}
+.product_description{
+    font-size: 12px;
+    /* margin-bottom: 10px; */
+}
+.product{
+    line-height: 1.2;
+    margin-bottom: 20px;
+    transition: all 1.5s ease-in-out;
+}
+
+.shop_now_btn {
+    background-color: white;
+    outline: none;
+    border: 0px;
+    font-size: 18px;
+    padding: 8px 15px;
+    margin-top: 30px;
+    transition: all 1.5s ease-in-out;
+}

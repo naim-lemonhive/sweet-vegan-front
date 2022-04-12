@@ -1,0 +1,15 @@
+.review_section_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 65px;
+}
+.review_cards_container li {
+    list-style: none;
+}
+.review_cards_container li:nth-child(odd) {
+  margin-left: 75px;
+}
+
+.review_section_left {
+    max-width: 450px;
+}

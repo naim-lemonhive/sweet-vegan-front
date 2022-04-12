@@ -1,0 +1,34 @@
+
+.story_section {
+    width: 100%;
+    min-height: 750px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 65px;
+    position: relative;
+}
+
+.section_body {
+    position: absolute;
+    width: 100%;
+}
+
+.image_container {
+    width: 1200px;
+    height: 550px;
+    background-color: #F2F2F2;
+    position: absolute;
+    top: 100px;
+}
+
+.story_content {
+    background-color: #FEF4F8;
+    width: 600px;
+    position: absolute;
+    padding-right: 10px;
+}
+
+.story_content_btn {
+    margin-top: 35px;
+    margin-bottom: 45px;
+}
