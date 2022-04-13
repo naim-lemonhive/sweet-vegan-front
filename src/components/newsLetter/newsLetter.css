@@ -1,0 +1,32 @@
+.news_letter_container {
+  width: 100%;
+  min-height: 410px;
+  background-color: #fe7968;
+  margin-top: 65px;
+  margin-bottom: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter_input_container {
+  position: relative;
+}
+
+.newsletter_input {
+  width: 583px;
+  height: 57px;
+  padding: 15px;
+  border: none;
+}
+
+.news_letter_title {
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+.newsletter_btn {
+  position: absolute;
+  right: 20px;
+  top: 3px;
+}

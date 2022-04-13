@@ -6,6 +6,7 @@ import Product from "../components/product/Product"
 import { Speciality } from "../components/homePage/speciality"
 import { StorySection } from "../components/homePage/storySection"
 import { ReviewSection } from "../components/homePage/reviewSection"
+import { NewsLetter } from "../components/newsLetter"
 
 const IndexPage = () => (
   <Layout>
@@ -15,6 +16,7 @@ const IndexPage = () => (
     <Product />
     <StorySection />
     <ReviewSection />
+    <NewsLetter />
   </Layout>
 )
 

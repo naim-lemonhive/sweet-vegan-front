@@ -1,46 +1,46 @@
 .speciality_section {
-    width: 100%;
-    background-color: #FEF4F8;
-    min-height: 750px;
+  width: 100%;
+  background-color: #fef4f8;
+  min-height: 750px;
 }
 
 .speciality_header {
-    padding-top: 65px;
-    text-align: center;
+  padding-top: 65px;
+  text-align: center;
 }
 
 .specialty_body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 35px;
 }
 
 .body_left {
-    position: relative;
+  position: relative;
 }
 
 .body_left_svg {
-    position: absolute;
+  position: absolute;
 }
 .body_left_box {
-    position: absolute;
-    top: 65px;
-    left: 155px;
+  position: absolute;
+  top: 65px;
+  left: 155px;
 }
 
 .body_right {
 }
 .body_right ul {
-    margin-top: 30px;
-    margin-left: 30px;
-    columns: 2;
-    list-style-image: url('../../../images/listicon.png');
+  margin-top: 30px;
+  margin-left: 30px;
+  columns: 2;
+  list-style-image: url("../../../images/listicon.png");
 }
 
 .body_right ul li {
-    margin-bottom: 15px;
-    font-family: 'Source Sans Pro';
-    size: 16px;
-    line-height: 18px;
-    color: #4F4F4F;
+  margin-bottom: 15px;
+  font-family: "Source Sans Pro", sans-serif;
+  size: 16px;
+  line-height: 18px;
+  color: #4f4f4f;
 }

@@ -1,46 +1,46 @@
 .review_card_container {
-    width: 450px;
-    background-color: #ffffff;
-    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
-    position: relative;
-    padding: 5px;
-    margin-bottom: 10px;
+  width: 450px;
+  background-color: #ffffff;
+  filter: drop-shadow(0px 12px 8px rgba(224, 224, 224, 0.3));
+  position: relative;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 .profile_img {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    z-index: 5;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  z-index: 5;
 }
 
 .circle1 {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    background-color: #E41C79;
-    position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: #e41c79;
+  position: absolute;
 }
 .circle2 {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    background-color: #F5BD17;
-    position: absolute;
-    top: 15px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: #f5bd17;
+  position: absolute;
+  top: 15px;
 }
 
 .review_card_content {
-    margin-left: 80px;
-    padding-right: 10px;
+  margin-left: 80px;
+  padding-right: 10px;
 }
 
 .user_profession {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    color: #828282;
-    margin-top: -30px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #828282;
+  margin-top: -30px;
 }
