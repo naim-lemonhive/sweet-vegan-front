@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
-import { Button } from '../buttons/button';
-import './box.css'
+import React, { useState } from "react"
+import { Button } from "../buttons/button"
+import "./box.css"
 
+function Box({ prodcut }) {
+  const { productName, description, productColor } = prodcut
+  const [isHover, setIsHover] = useState(false)
 
-function Box({ prodcut}) {
-  console.log(prodcut);
-  const { productName, midName, text1, text2, backgroundColor } = { ...prodcut }
-  const [isHover,setIsHover] =useState(false);
-  // console.log(productName);
   return (
     <div
       style={{ textAlign: "center" }}
@@ -15,7 +13,7 @@ function Box({ prodcut}) {
       onMouseLeave={() => setIsHover(false)}
     >
       <div className="trapezoid">
-        <div className="heading" style={{ backgroundColor: backgroundColor }}>
+        <div className="heading" style={{ backgroundColor: productColor }}>
           <p>{productName}</p>
         </div>
         <div className="text">
@@ -30,22 +28,21 @@ function Box({ prodcut}) {
               >
                 <path
                   d="M46.804 1.72276C48.4463 0.672462 50.5493 0.672459 52.1916 1.72276L57.2706 4.97083C58.2912 5.62356 59.5141 5.8835 60.712 5.70234L66.673 4.80087C68.6005 4.50936 70.5217 5.36474 71.5949 6.99222L74.9136 12.0253C75.5805 13.0367 76.592 13.7716 77.76 14.0933L83.5723 15.6943C85.4517 16.212 86.8589 17.7749 87.1773 19.6981L88.162 25.6459C88.3599 26.8411 88.985 27.9239 89.9212 28.6929L94.5798 32.5195C96.0861 33.7569 96.736 35.757 96.2446 37.6435L94.725 43.4776C94.4196 44.65 94.5503 45.8934 95.0928 46.9767L97.7922 52.3673C98.665 54.1104 98.4452 56.2019 97.229 57.7254L93.4678 62.437C92.712 63.3838 92.3256 64.5729 92.3806 65.7832L92.654 71.8057C92.7425 73.7531 91.691 75.5744 89.9602 76.4715L84.6078 79.246C83.5322 79.8035 82.6956 80.7327 82.2536 81.8607L80.0538 87.4737C79.3425 89.2888 77.6411 90.5249 75.6951 90.6405L69.677 90.9981C68.4676 91.0699 67.3254 91.5785 66.4628 92.4291L62.1702 96.6622C60.7821 98.031 58.725 98.4682 56.9002 97.7823L51.257 95.6612C50.1229 95.235 48.8727 95.235 47.7386 95.6612L42.0954 97.7823C40.2706 98.4682 38.2135 98.031 36.8254 96.6622L32.5328 92.4291C31.6702 91.5785 30.528 91.0699 29.3186 90.9981L23.3005 90.6405C21.3545 90.5249 19.6531 89.2888 18.9418 87.4737L16.742 81.8606C16.3 80.7327 15.4634 79.8035 14.3878 79.246L9.0354 76.4715C7.30466 75.5744 6.25315 73.7531 6.34157 71.8057L6.61502 65.7832C6.66997 64.5729 6.28362 63.3838 5.52778 62.437L1.76661 57.7254C0.550398 56.2019 0.330572 54.1104 1.20345 52.3673L3.90284 46.9766C4.4453 45.8934 4.57598 44.65 4.2706 43.4776L2.75098 37.6435C2.25959 35.757 2.90946 33.7569 4.41586 32.5195L9.07443 28.6929C10.0106 27.9239 10.6357 26.8411 10.8336 25.6459L11.8183 19.6981C12.1367 17.7749 13.5439 16.212 15.4233 15.6943L21.2356 14.0933C22.4036 13.7716 23.4151 13.0367 24.082 12.0253L27.4007 6.99223C28.4739 5.36474 30.3951 4.50936 32.3226 4.80086L38.2836 5.70234C39.4815 5.8835 40.7044 5.62356 41.725 4.97083L46.804 1.72276Z"
-                  fill={`${backgroundColor}`}
+                  fill={`${productColor}`}
                 />
               </svg>
             </div>
-            <p className="middleName">{midName}</p>
+            <p className="middleName">{"Candy"}</p>
           </div>
         </div>
         <div className="product">
-          <p className="product_description">{text1}</p>
-          <p className="product_description">{text2}</p>
+          <p className="product_description">{description}</p>
         </div>
       </div>
       {isHover && (
         <>
           <div className="shop_now_btn">
-          <Button text="Shop now" color={backgroundColor} />
+            <Button text="Shop now" color={productColor} />
           </div>
         </>
       )}

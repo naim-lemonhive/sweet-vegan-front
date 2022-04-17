@@ -1,3 +1,5 @@
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import {
   FaFacebookF,
@@ -5,9 +7,34 @@ import {
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa"
-import image from "../../../images/logo.png"
 import "./Footer.css"
 function Footer() {
+  const data = useStaticQuery(graphql`
+    {
+      allSanityHomePage {
+        nodes {
+          pageContent {
+            ... on SanityPageFooter {
+              _key
+              _type
+              footerItemInfo {
+                pageLink
+                pageTitle
+              }
+              footerShortDescription
+              logo {
+                asset {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const footerData = data.allSanityHomePage.nodes[0].pageContent[6]
   return (
     <>
       <div className="footer">
@@ -15,38 +42,37 @@ function Footer() {
           <div className="footerWrapper">
             <div className="col-1">
               <div className="shortdes">
-                <img src={image} alt="" height="50px" />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley .
-                </p>
+                <GatsbyImage
+                  image={footerData.logo.asset.gatsbyImageData}
+                  alt="footer logo"
+                  height="50px"
+                />
+                <p>{footerData.footerShortDescription}</p>
               </div>
             </div>
             <div className="col-2">
               <div>
                 <ul>
-                  <li>Home</li>
-                  <li>Product</li>
-                  <li>About</li>
-                  <li>Contact</li>
+                  {footerData.footerItemInfo.length &&
+                    footerData.footerItemInfo
+                      .slice(0, 4)
+                      .map(ele => <li key={ele.pageTitle}>{ele.pageTitle}</li>)}
                 </ul>
               </div>
               <div className="col-3">
                 <ul>
-                  <li>Privacy</li>
-                  <li>News</li>
-                  <li>Contact Policey</li>
-                  <li>Privacy Policey</li>
+                  {footerData.footerItemInfo.length > 4 &&
+                    footerData.footerItemInfo
+                      .slice(4, 8)
+                      .map(ele => <li key={ele.pageTitle}>{ele.pageTitle}</li>)}
                 </ul>
               </div>
               <div className="col-4">
                 <ul>
-                  <li>Privacy</li>
-                  <li>News</li>
-                  <li>Contact Policey</li>
-                  <li>Privacy Policey</li>
+                  {footerData.footerItemInfo.length > 8 &&
+                    footerData.footerItemInfo
+                      .slice(8)
+                      .map(ele => <li key={ele.pageTitle}>{ele.pageTitle}</li>)}
                 </ul>
               </div>
             </div>

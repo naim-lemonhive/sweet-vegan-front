@@ -1,8 +1,9 @@
-import React from 'react'
-import Box from '../box/Box'
-import { Description } from '../typography/description';
-import { Title } from '../typography/title';
-import './product.css'
+import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
+import Box from "../box/Box"
+import { Description } from "../typography/description"
+import { Title } from "../typography/title"
+import "./product.css"
 const prodcut = [
   {
     id: "1",
@@ -65,20 +66,44 @@ const info = {
 }
 
 function Product() {
+  const data = useStaticQuery(graphql`
+    {
+      allSanityHomePage {
+        nodes {
+          pageContent {
+            ... on SanityPageProductFlavour {
+              _key
+              _type
+              productFlavourHeading
+              productFlavourDescription
+              productFlavour {
+                productName
+                productColor
+                slug {
+                  current
+                }
+                description
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const productsData = data.allSanityHomePage.nodes[0].pageContent[3]
   return (
     <div className="container">
       <div className="product_header">
-        <Title text={info.title} color="#FE7968" />
-        <Description text={info.description} />
+        <Title text={productsData.productFlavourHeading} color="#FE7968" />
+        <Description text={productsData.productFlavourDescription} />
       </div>
       <div className="box">
         <div className="wrapper">
-          {prodcut.map(i => {
+          {productsData.productFlavour.map(i => {
             return (
-              <div
-                style={{ background: `${i.backgroundColor}` }}
-                className="card"
-              >
+              <div style={{ background: `${i.productColor}` }} className="card">
                 <Box prodcut={i} />
                 <div style={{ height: "20px" }}></div>
               </div>

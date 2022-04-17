@@ -1,3 +1,5 @@
+const sanityConfig = require("./sanity-config")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -44,6 +46,12 @@ module.exports = {
             variants: [`400`, `700`],
           },
         ],
+      },
+    },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        ...sanityConfig,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

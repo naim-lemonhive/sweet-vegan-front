@@ -1,20 +1,46 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import { FaTimes, FaBars } from "react-icons/fa"
-import logo from '../../../images/logo.png';
-import "./header.css";
+import "./header.css"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 function Header() {
   const [click, setClick] = useState(false)
   const handleClick = () => setClick(!click)
+
+  // fetch data ===============================
+  const data = useStaticQuery(graphql`
+    {
+      allSanityHomePage {
+        nodes {
+          pageContent {
+            ... on SanityPageHeaderSection {
+              _key
+              _type
+              logo {
+                asset {
+                  gatsbyImageData
+                }
+              }
+              navItemInfo {
+                pageLink
+                pageTitle
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  const navData = data.allSanityHomePage.nodes[0].pageContent[0]
   return (
     <>
       <header className="siteheader" onClick={handleClick}>
         <div id="siteHeaderInner" className="siteHeaderContainer">
           <div className="wrapInner">
             <Link to="/">
-              <img
-                src={logo}
+              <GatsbyImage
+                image={navData.logo.asset.gatsbyImageData}
                 alt="logo"
                 height="50px"
                 style={{ backgroundSize: "contain" }}
@@ -28,18 +54,14 @@ function Header() {
               )}
             </div>
             <div className={click ? "topnav active" : "topnav"} id="myTopnav">
-              <Link href="/">
-                <a className="homeText">Home</a>
-              </Link>
-              <Link href="/">
-                <a className="homeText">Products</a>
-              </Link>
-              <Link href="/">
-                <a className="homeText">About</a>
-              </Link>
-              <Link href="/">
-                <a className="homeText">Contact</a>
-              </Link>
+              {navData.navItemInfo.map(ele => (
+                <Link
+                  key={ele.pageTitle}
+                  href={ele.pageLink ? `/${ele.pageLink}` : "/"}
+                >
+                  <a className="homeText">{ele.pageTitle}</a>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -48,4 +70,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default Header

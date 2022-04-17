@@ -1,7 +1,45 @@
-import React from 'react'
-import BoxHeroSection from '../heroSectionBox';
-import {heroSection, heroTitle, heroDescription, heroButton, heroItemContainer} from './HeroSection.module.css';
+import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
+import BoxHeroSection from "../heroSectionBox"
+import {
+  heroSection,
+  heroTitle,
+  heroDescription,
+  heroButton,
+  heroItemContainer,
+} from "./HeroSection.module.css"
 const HeroSection = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allSanityHomePage {
+        nodes {
+          pageContent {
+            ... on SanityPageHeroSection {
+              heroSectionBackground
+              heroShortDescription
+              heroTitle
+              headingText {
+                textColor
+                textSize
+              }
+              heroButtonText {
+                buttonBackgroundColor
+                buttonLink
+                buttonText
+                buttonTextColor
+              }
+              heroDescriptionTextSize {
+                textColor
+                textSize
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const heroData = data.allSanityHomePage.nodes[0].pageContent[1]
   return (
     <div className={heroSection}>
       <div className="container">
@@ -15,17 +53,12 @@ const HeroSection = () => {
                 height: "600px",
               }}
             >
-              <h1 className={heroTitle}>
-                What makes our Sweet so special?
-              </h1>
+              <h1 className={heroTitle}>{heroData.heroTitle}</h1>
               <h5 className={heroDescription}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-                odit quos sed obcaecati nostrum. Blanditiis modi exercitationem
-                aut voluptas explicabo quae vitae necessitatibus voluptates, eos
-                debitis neque hic eaque earum.
+                {heroData.heroShortDescription}
               </h5>
-              <button className={heroButton} >
-                Buy Now
+              <button className={heroButton}>
+                {heroData.heroButtonText.buttonText.toUpperCase()}
               </button>
             </div>
           </div>
@@ -44,11 +77,11 @@ const HeroSection = () => {
               style={{
                 filter: "drop-shadow(0px 5px 10px rgba(0,0,0,0.3))",
                 position: "absolute",
-                top: '230px',
-                left: '350px'
+                top: "230px",
+                left: "350px",
               }}
             >
-              <BoxHeroSection size={{width: '240px', height: '322px'}} />
+              <BoxHeroSection size={{ width: "240px", height: "322px" }} />
             </div>
             <div
               style={{
@@ -56,20 +89,20 @@ const HeroSection = () => {
                 filter: "drop-shadow(0px 5px 10px rgba(0,0,0,0.3))",
                 position: "absolute",
                 top: "250px",
-                left: 50
+                left: 50,
               }}
             >
-              <BoxHeroSection size={{width: '208px', height: '278px'}} />
+              <BoxHeroSection size={{ width: "208px", height: "278px" }} />
             </div>
             <div
               style={{
                 filter: "drop-shadow(0px 5px 10px rgba(0,0,0,0.3))",
                 position: "absolute",
-                top: '130px',
-                left: '150px'
+                top: "130px",
+                left: "150px",
               }}
             >
-              <BoxHeroSection size={{width: '280px', height: '375px'}} />
+              <BoxHeroSection size={{ width: "280px", height: "375px" }} />
             </div>
           </div>
         </div>
@@ -78,4 +111,4 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection;
+export default HeroSection

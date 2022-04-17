@@ -65,6 +65,7 @@ width: 200px; */
 }
 .product_description {
   font-size: 12px;
+  padding: 10px;
   /* margin-bottom: 10px; */
 }
 .product {

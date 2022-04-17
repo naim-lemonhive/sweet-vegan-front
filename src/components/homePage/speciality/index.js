@@ -1,25 +1,55 @@
-import React from 'react';
-import { Description } from '../../typography/description';
-import { Title } from '../../typography/title';
-import BoxHeroSection from '../heroSectionBox';
-import './speciality.css';
-const info = {
-  title: "What makes our sweet so special?",
-  description:
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-     Justo, pharetra egestas in massa faucibus vitae. 
-     Blandit porttitor quam tortor lacus. 
-     Justo, pharetra egestas in massa faucibus vitae. 
-     Blandit porttitor quam tortor lacus. 
-     Euismod cursus gravida semper.`,
-}
+import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
+import { Description } from "../../typography/description"
+import { Title } from "../../typography/title"
+import BoxHeroSection from "../heroSectionBox"
+import "./speciality.css"
+
 export const Speciality = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allSanityHomePage {
+        nodes {
+          pageContent {
+            ... on SanityPageProductSpeciality {
+              _type
+              productSpecialityDescription
+              productSpecialityHeading
+              productSpecialityDescriptionText {
+                textColor
+                textSize
+              }
+              productSpecialityHeadingText {
+                textColor
+                textSize
+              }
+              selectProductforSpeciality {
+                description
+                productColor
+                productName
+                slug {
+                  current
+                }
+                ingredients
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const specialityData = data.allSanityHomePage.nodes[0].pageContent[2]
+
   return (
     <div className="speciality_section">
       <div className="container">
         <div className="speciality_header">
-          <Title text={info.title} color="#FE7968" />
-          <Description text={info.description} />
+          <Title
+            text={specialityData.productSpecialityHeading}
+            color="#FE7968"
+          />
+          <Description text={specialityData.productSpecialityDescription} />
         </div>
         <div className="specialty_body">
           <div className="body_left">
@@ -43,14 +73,17 @@ export const Speciality = () => {
           </div>
           <div className="body_right">
             <Title text="Ingredients" color="#4F4F4F" size="40px" />
-            <Description text={info.description} textAlign="justify" />
+            <Description
+              text={specialityData.productSpecialityDescription}
+              textAlign="justify"
+            />
             <ul>
               <li>Lorem ipsum dolor</li>
               <li>Lorem ipsum</li>
               <li>Lorem ipsum dolor</li>
               <li>Lorem ipsum dolor</li>
               <li>Lorem ipsum dolor</li>
-              <li>Lorem ipsum</li> 
+              <li>Lorem ipsum</li>
             </ul>
           </div>
         </div>
